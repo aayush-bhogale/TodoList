@@ -1,0 +1,29 @@
+﻿
+@model ToDoList.Models.ToDoItem
+<h2>Edit Todo</h2>
+
+<form asp-action="Edit" method="post">
+	@Html.AntiForgeryToken()
+	<input type="hidden" asp-for="Id"/>
+
+	<div class="mb-3">
+		<label asp-for="Title" class="form-label">Title</label>
+		<input asp-for="Title" class="form-control"/>
+		<span asp-validation-for="Title" class="text-danger"></span>
+	</div>
+
+	<div class="mb-3">
+		<label asp-for="Description" class="form-label">Description</label>
+		<textarea asp-for="Description" class="form-control" rows="4"></textarea>
+		<span asp-validation-for="Description" class="text-danger"></span>
+	</div>
+
+	<div class="mb-3 form-check">
+		<input asp-for="IsCompleted" class="form-check-input"/>
+		<label asp-for="IsCompleted" class="form-check-label">Completed</label>
+	</div>
+
+	<button type="submit" class="btn btn-primary">Update</button>
+	<a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
