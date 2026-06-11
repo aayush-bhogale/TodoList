@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using ToDoList.Data;
 using ToDoList.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,9 +7,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
 //register the repository as singleton for DI. Added by me
-builder.Services.AddSingleton<ITodoRepository,InMemoryToDoRepository>();
-//builder.Services.AddSingleton<ITodoRepository,DatabaseToDoRepository>(); for database 
+//builder.Services.AddSingleton<ITodoRepository,InMemoryToDoRepository>();
+
+// register ef core with sql server
+builder.Services.AddDbContext<TodoDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<ITodoRepository, SqlServerTodoRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

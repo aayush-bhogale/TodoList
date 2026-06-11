@@ -2,7 +2,7 @@
 
 namespace ToDoList.Repositories
 {
-    public interface ITodoRepository//here all actions are written
+    public interface ITodoRepository//here all actions are written. This is the interface
     {
         List<ToDoItem> GetAll();
         void Add(ToDoItem item);

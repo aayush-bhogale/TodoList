@@ -14,8 +14,7 @@ namespace ToDoList.Repositories
         }
         public void Add(ToDoItem item)
         {
-            item.Id=_nextId++;
-
+            item.Id=_nextId++;  
             _items.Add(item);
         }
 
