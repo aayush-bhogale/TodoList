@@ -43,7 +43,7 @@ namespace ToDoList.Controllers
             return View(todo);
         }
 
-        public IActionResult Edit(int id)// get: todo/edit/ >show a form to edit todo item
+        public IActionResult Edit(string id)// get: todo/edit/ >show a form to edit todo item
         {
             var todo = _todoRepository.GetById(id);
             if (todo == null)
@@ -71,7 +71,7 @@ namespace ToDoList.Controllers
             return View(todo);
         }
 
-        public IActionResult Delete(int id)// get: todo/delete/ >show a form to delete todo item
+        public IActionResult Delete(string id)// get: todo/delete/ >show a form to delete todo item
         {
             var todo = _todoRepository.GetById(id);
             if (todo == null)
@@ -83,7 +83,7 @@ namespace ToDoList.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)//post: todo/deleteConfirmation/ >handle deleteion of todo item
+        public IActionResult DeleteConfirmed(string id)//post: todo/deleteConfirmation/ >handle deleteion of todo item
         {
             var todo =_todoRepository.GetById(id);
             if (todo==null)

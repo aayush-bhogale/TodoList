@@ -12,8 +12,10 @@ builder.Services.AddControllersWithViews();
 //builder.Services.AddSingleton<ITodoRepository,InMemoryToDoRepository>();
 
 // register ef core with sql server
-builder.Services.AddDbContext<TodoDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddScoped<ITodoRepository, SqlServerTodoRepository>();
+//builder.Services.AddDbContext<TodoDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+//builder.Services.AddScoped<ITodoRepository, SqlServerTodoRepository>();
+
+builder.Services.AddSingleton<ITodoRepository, CosmosTodoRepository>();
 
 var app = builder.Build();
 
